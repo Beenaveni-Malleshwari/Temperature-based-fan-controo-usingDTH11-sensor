@@ -1,0 +1,42 @@
+#include <DHT.h>
+# define Dht11=3; 
+#define A=1;
+#define B=2;
+#define Enable=4;
+# define DTHType dth11;
+int fan_speed=0;
+
+void setup(){
+PinMode(3,INPUT);
+PinMode(A,OUTPUT);
+PinMode(B,OUTPUT);
+PinMode(Enable,OUTPUT);
+serial.Begin(9600);
+serial.read(DHT11);
+}
+
+
+Void loop(){
+Float tempval = dht.read temperature();
+DigitalWrite(Enable,fanspeed);
+serial.print("unable to read the Dht11 sensor values ");
+Serial.begin (9600);
+serial.print("temperature :___");
+serial.print("F/C temperature --- ");
+if ( tempval <30){
+fan_speed_val = 0;
+serial.print ("normal temperature ");
+}
+
+else if (tempval>=30 && tempval <35){
+fan_speed_val =128;
+serial.print("medium temperature ");
+
+}
+
+else {
+fan_speed_val= 255;
+
+serial.print("high temperature");
+}
+}
